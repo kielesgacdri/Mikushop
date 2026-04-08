@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genshin Joki | Miku Shop</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+        :root {
+            --miku-blue: #00e5ff;
+            --bg-dark: #050a14;
+            --card-dark: #0e1628;
+            --text-dim: #a0aec0;
+            --neon-glow: 0 0 15px rgba(0, 229, 255, 0.3);
+        }
+
+        body {
+            background: var(--bg-dark);
+            background-image: radial-gradient(circle at top right, #0a1f3d 0%, var(--bg-dark) 60%);
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: white;
+            padding-bottom: 120px;
+        }
+
+        header {
+            background: rgba(14, 22, 40, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        header b { color: var(--miku-blue); letter-spacing: 2px; font-weight: 800; text-shadow: var(--neon-glow); }
+
+        .container { padding: 20px; max-width: 450px; margin: auto; }
+
+        .glass-box {
+            background: var(--card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--miku-blue);
+            margin-bottom: 5px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .alert-text {
+            font-size: 10px;
+            color: var(--text-dim);
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+            line-height: 1.4;
+        }
+
+        /* PRIMO GRID */
+        .primo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .primo-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .primo-item img { width: 30px; margin-bottom: 8px; filter: drop-shadow(var(--neon-glow)); }
+        .primo-item.active { border-color: var(--miku-blue); background: rgba(0, 229, 255, 0.1); transform: translateY(-5px); }
+        .primo-item b { font-size: 12px; margin-bottom: 4px; }
+        .primo-item span { color: var(--miku-blue); font-weight: 800; font-size: 14px; }
+
+        /* LIST SERVICE */
+        .service-list { display: flex; flex-direction: column; gap: 10px; }
+        .service-row {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .service-row.active { border-color: var(--miku-blue); background: rgba(0, 229, 255, 0.1); }
+        .service-row b { font-size: 13px; color: #fff; }
+        .service-row .price-tag { color: var(--miku-blue); font-weight: 800; font-size: 13px; }
+
+        /* FOOTER ROZEZ STYLE */
+        .footer-nav {
+            position: fixed; bottom: 20px; left: 15px; right: 15px;
+            max-width: 420px; margin: auto;
+            background: rgba(14, 22, 40, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+        .footer-info span { font-size: 10px; color: var(--text-dim); display: block; font-weight: 600; }
+        .footer-info b { font-size: 18px; color: var(--miku-blue); text-shadow: var(--neon-glow); }
+        
+        .btn-pay {
+            background: linear-gradient(135deg, var(--miku-blue), #0091ff);
+            color: #000;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 16px;
+            font-weight: 800;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 229, 255, 0.4);
+        }
+
+        .manual-banner {
+            text-align: center; font-size: 10px; color: var(--text-dim); font-weight: 700;
+            padding: 12px; border: 1px dashed rgba(255,255,255,0.15); border-radius: 15px;
+            margin-top: 15px; letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <b>MIKU SHOP</b>
+    </header>
+
+    <div class="container">
+        <!-- PRIMO SECTION -->
+        <div class="glass-box">
+            <span class="section-title">Joki Primogems</span>
+            <span class="alert-text">"Proses pengerjaan manual sayang, akan dikerjakan sesuai antrian!"</span>
+            
+            <div class="primo-grid">
+                <div class="primo-item" onclick="pilih(3000, this, '160 Primo')">
+                    <img src=primo.png
+                    alt="primo">
+                    <b>160 Primo</b><span>Rp 3.000</span>
+                </div>
+                <div class="primo-item" onclick="pilih(6000, this, '320 Primo')">
+                    <img src=primo.png alt="primo">
+                    <b>320 Primo</b><span>Rp 6.000</span>
+                </div>
+                <div class="primo-item" onclick="pilih(9000, this, '480 Primo')">
+                    <img src=primo.png alt="primo">
+                    <b>480 Primo</b><span>Rp 9.000</span>
+                </div>
+                <div class="primo-item" onclick="pilih(30000, this, '1600 Primo')">
+                    <img src=primo.png alt="primo">
+                    <b>1600 Primo</b><span>Rp 30.000</span>
+                </div>
+                <div class="primo-item" onclick="pilih(60000, this, '3200 Primo')">
+                    <img src=primo.png alt="primo">
+                    <b>3200 Primo</b><span>Rp 60.000</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTHER SERVICE SECTION -->
+        <div class="glass-box">
+            <span class="section-title">Layanan Joki</span>
+            <div class="service-list">
+                <div class="service-row" onclick="pilih(10000, this, 'Joki Artefak')">
+                    <div><b>Joki Artefak</b><br><small style="font-size:9px; color:var(--text-dim)">"Diharapkan mempunyai resin yang cukup"</small></div>
+                    <span class="price-tag">Rp 10.000</span>
+                </div>
+                <div class="service-row" onclick="pilih(10000, this, 'Spiral Abyss')">
+                    <b>Spiral Abyss / Stage</b>
+                    <span class="price-tag">Rp 10.000</span>
+                </div>
+                <div class="service-row" onclick="pilih(0, this, 'Level Up Char')">
+                    <b>Level Up Character</b>
+                    <span class="price-tag" style="color:var(--text-dim)">Chat Admin</span>
+                </div>
+                <div class="service-row" onclick="pilih(0, this, 'Joki Quest')">
+                    <b>Joki Quest</b>
+                    <span class="price-tag" style="color:var(--text-dim)">Chat Admin</span>
+                </div>
+                <div class="service-row" onclick="pilih(0, this, 'Eksplorasi Map')">
+                    <b>Eksplorasi Map</b>
+                    <span class="price-tag" style="color:var(--text-dim)">Chat Admin</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="manual-banner">
+            PROSES PENGERJAAN MANUAL YA MURNI 100%
+        </div>
+    </div>
+
+    <!-- FOOTER FLOATING -->
+    <div class="footer-nav">
+        <div class="footer-info">
+            <span>Total Pembayaran</span>
+            <b id="display_harga">Rp 0</b>
+        </div>
+        <button class="btn-pay" onclick="gasWA()">BELI SEKARANG</button>
+    </div>
+
+    <script>
+        let hargaFix = 0; let namaPaket = "";
+        function pilih(harga, elemen, nama) {
+            hargaFix = harga; namaPaket = nama;
+            document.getElementById('display_harga').innerText = harga === 0 ? "Chat Admin" : "Rp " + harga.toLocaleString('id-ID');
+            document.querySelectorAll('.primo-item, .service-row').forEach(i => i.classList.remove('active'));
+            elemen.classList.add('active');
+        }
+        function gasWA() {
+            if(!namaPaket) return alert("Pilih paket joki dulu!");
+            const h = hargaFix === 0 ? "Tanya Admin" : "Rp " + hargaFix.toLocaleString('id-ID');
+            const teks = `Halo Admin Miku Shop, saya mau order:\n\n📦 Layanan: ${namaPaket}\n💰 Harga: ${h}\n\n*PROSES PENGERJAAN MANUAL YA MURNI 100%*`;
+            window.open("https://wa.me/6283851355427?text=" + encodeURIComponent(teks));
+        }
+    </script>
+</body>
+</html>
