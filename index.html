@@ -3,181 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miku Shop | Premium Joki</title>
+    <title>Miku Shop - Joki Game</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
-
-        :root {
-            --miku-blue: #00e5ff;
-            --miku-dark: #050a14;
-            --miku-card: #0e1628;
-            --neon-glow: 0 0 15px rgba(0, 229, 255, 0.4);
-        }
-
-        body {
-            background: var(--miku-dark);
-            /* Efek cahaya radial di background biar gak polos */
-            background-image: radial-gradient(circle at 50% 50%, #0a1f3d 0%, var(--miku-dark) 80%);
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow: hidden; /* Biar rapi di HP */
-        }
-
-        /* HEADER DENGAN BLUR KACA */
-        header {
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            background: rgba(14, 22, 40, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 229, 255, 0.2);
-            position: relative;
-        }
-
-        header b { 
-            font-size: 22px; 
-            color: var(--miku-blue); 
-            text-transform: uppercase; 
-            letter-spacing: 4px; 
-            font-weight: 800;
-            text-shadow: var(--neon-glow);
-        }
-
-        /* CONTAINER TENGAH */
-        .wrapper {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-        }
-
-        /* BACKGROUND DEKORASI (LINGKARAN NYALA) */
-        .wrapper::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: var(--miku-blue);
-            filter: blur(100px);
-            opacity: 0.15;
-            z-index: 0;
-        }
-
-        /* KOTAK GENSHIN PREMIUM */
-        .genshin-card {
-            background: var(--miku-card);
-            border-radius: 30px;
-            padding: 10px;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            width: 100%;
-            max-width: 280px;
-            z-index: 1;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            position: relative;
-        }
-
-        .img-container {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 22px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        /* TEXT OVERLAY DI DALAM GAMBAR */
-        .card-tag {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(0, 229, 255, 0.9);
-            color: #000;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 5px 12px;
-            border-radius: 20px;
-            text-transform: uppercase;
-        }
-
-        /* INFO BOX */
-        .card-details {
-            padding: 20px 10px 15px;
-            text-align: center;
-        }
-
-        .card-details h2 {
-            margin: 0;
-            font-size: 18px;
-            letter-spacing: 0.5px;
-            background: linear-gradient(to right, #fff, var(--miku-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .card-details p {
-            margin: 5px 0 0;
-            font-size: 12px;
-            color: var(--miku-blue);
-            font-weight: 600;
-            opacity: 0.8;
-            letter-spacing: 1px;
-        }
-
-        /* ANIMASI HOVER/ACTIVE */
-        .genshin-card:active {
-            transform: scale(0.92);
-            border-color: var(--miku-blue);
-            box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
-        }
-
-        /* FOOTER KECIL */
-        footer {
-            padding: 20px;
-            text-align: center;
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.3);
-            letter-spacing: 2px;
-        }
+        body { font-family: sans-serif; background: #121212; color: white; text-align: center; margin: 0; }
+        .header { padding: 20px; background: #1e1e1e; border-bottom: 3px solid cyan; }
+        .logo { width: 80px; border-radius: 50%; }
+        .container { padding: 20px; }
+        .game-card { background: #252525; border-radius: 15px; padding: 15px; margin-bottom: 20px; border: 2px solid transparent; transition: 0.3s; cursor: pointer; }
+        .game-card:hover { border-color: #00e5ff; transform: scale(1.02); }
+        .game-card img { width: 100%; border-radius: 10px; }
+        h2 { color: #00e5ff; }
     </style>
 </head>
 <body>
-
-    <header>
-        <b>MIKU SHOP</b>
-    </header>
-
-    <div class="wrapper">
-        <a href="genshin_detail.html" class="genshin-card">
-            <div class="img-container">
-                <div class="card-tag">Hot Service</div>
-                <img src="genshin.png" alt="Genshin Impact">
-            </div>
-            <div class="card-details">
-                <h2>GENSHIN IMPACT</h2>
-                <p>MANUAL JOKI SYSTEM</p>
-            </div>
-        </a>
+    <div class="header">
+        <img src="mikulogo.png" class="logo" alt="Miku Logo">
+        <h1>MIKU SHOP</h1>
+        <p>Joki Game Terpercaya & Cepat</p>
     </div>
-
-    <footer>
-        &copy; 2026 MIKU SHOP - EST. BY KIEL
-    </footer>
-
+    <div class="container">
+        <div class="game-card" onclick="location.href='genshin_detail.html'">
+            <img src="genshin.png" alt="Genshin Impact">
+            <h2>Genshin Impact</h2>
+            <p>Joki Primo, Artefak, Explore & Archon Quest</p>
+        </div>
+        </div>
 </body>
 </html>
